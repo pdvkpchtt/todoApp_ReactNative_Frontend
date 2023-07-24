@@ -1,4 +1,3 @@
-import * as React from "react";
 import Animated from "react-native-reanimated";
 import Svg, { Path } from "react-native-svg";
 

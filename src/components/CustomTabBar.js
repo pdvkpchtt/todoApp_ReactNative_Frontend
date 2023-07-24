@@ -14,22 +14,17 @@ import TabBarComponent from "./TabBarComponent";
 
 import HomeIcon from "../shared/Icons/HomeIcon";
 import ProfileIcon from "../shared/Icons/ProfileIcon";
-import SunIcon from "../shared/Icons/SunIcon";
-import MoonIcon from "../shared/Icons/MoonIcon";
+import AnimatedSunIcon from "../shared/Icons/AnimatedSunIcon";
+import DecorationIcon from "../shared/Icons/DecorationIcon";
 
 const CustomTabBar = ({
   state: { index: activeIndex, routes },
   navigation,
-  descriptors,
 }) => {
   const { bottom } = useSafeAreaInsets();
   const theme = useSelector((state) => state.theme.theme);
 
-  const icons = [
-    theme.includes("_dark") ? <MoonIcon /> : <SunIcon />,
-    <HomeIcon />,
-    <ProfileIcon />,
-  ];
+  const icons = [<DecorationIcon />, <HomeIcon />, <ProfileIcon />];
 
   const reducer = (state, action) => {
     return [...state, { x: action.x, index: action.index }];

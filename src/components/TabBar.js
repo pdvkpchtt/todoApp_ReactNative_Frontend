@@ -26,9 +26,14 @@ const TabBar = () => {
       <Tab.Navigator
         initialRouteName="Home"
         tabBar={(props) => <CustomTabBar {...props} />}
-        // screenOptions={{
-        //   headerTitleStyle: { fontSize: 20, lineHeight: 30 },
-        // }}
+        screenOptions={{
+          headerTitleStyle: { fontSize: 20, lineHeight: 30 },
+          headerTitleAlign: "center",
+          // headerStyle: {
+          //   borderBottomRightRadius: 35,
+          //   borderBottomLeftRadius: 35,
+          // },
+        }}
       >
         <Tab.Screen name="Decoration" component={DecorationStackScreen} />
         <Tab.Screen name="Home" component={HomeStackScreen} />

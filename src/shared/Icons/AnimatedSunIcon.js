@@ -1,7 +1,7 @@
 import * as React from "react";
 import Svg, { Path, G, Circle } from "react-native-svg";
 
-const SunIcon = ({ fill, ...props }) => (
+const AnimatedSunIcon = ({ fill, ...props }) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
     width="30px"
@@ -15,4 +15,4 @@ const SunIcon = ({ fill, ...props }) => (
     />
   </Svg>
 );
-export default SunIcon;
+export default AnimatedSunIcon;

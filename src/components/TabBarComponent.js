@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { Pressable, Text } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -14,8 +13,6 @@ const TabBarComponent = ({
   componentStyle,
   icon,
 }) => {
-  const ref = useRef(null);
-
   const animatedCircleStyle = useAnimatedStyle(() => {
     return {
       transform: [
@@ -27,6 +24,8 @@ const TabBarComponent = ({
   const animatedIconStyle = useAnimatedStyle(() => {
     return {
       opacity: withSpring(active ? 1 : 0.5, { duration: 250, damping: 35 }),
+      scaleX: withSpring(active ? 1 : 0.75, { duration: 250, damping: 35 }),
+      scaleY: withSpring(active ? 1 : 0.75, { duration: 250, damping: 35 }),
     };
   });
 
