@@ -1,4 +1,5 @@
-import { Pressable, View, Text } from "react-native";
+import { useRef } from "react";
+import { Pressable, Text } from "react-native";
 import Animated, {
   useAnimatedStyle,
   withSpring,
@@ -11,11 +12,14 @@ const TabBarComponent = ({
   circleStyle,
   iconStyle,
   componentStyle,
+  icon,
 }) => {
+  const ref = useRef(null);
+
   const animatedCircleStyle = useAnimatedStyle(() => {
     return {
       transform: [
-        { scale: withSpring(active ? 1 : 0, { duration: 250, damping: 35 }) },
+        { scale: withSpring(active ? 1 : 0, { duration: 250, damping: 15 }) },
       ],
     };
   });
@@ -31,7 +35,7 @@ const TabBarComponent = ({
       <Animated.View style={[circleStyle, animatedCircleStyle]} />
 
       <Animated.View style={[iconStyle, animatedIconStyle]}>
-        <Text>?</Text>
+        {icon}
       </Animated.View>
     </Pressable>
   );

@@ -10,8 +10,7 @@ const Layout = ({ children }) => {
     <View
       style={{
         flex: 1,
-        padding: 12,
-        backgroundColor: ChangeTheme(theme).bgColor,
+        // backgroundColor: ChangeTheme(theme).bgColor,
       }}
     >
       {children}

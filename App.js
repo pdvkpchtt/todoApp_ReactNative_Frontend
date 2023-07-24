@@ -24,7 +24,7 @@ export default function App() {
     <Provider store={store}>
       <TabBar />
 
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </Provider>
   );
 }

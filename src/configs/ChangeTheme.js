@@ -14,14 +14,14 @@ const ChangeTheme = (theme) => {
     case "theme_usual":
       return {
         ...defaultParamsLight,
-        accent: "#477dbb",
+        accent: "#604ae6",
         bgColor: "#edeef0",
         container: "#fff",
       };
     case "theme_usual_dark":
       return {
         ...defaultParamsDark,
-        accent: "#6495cc",
+        accent: "#604ae6",
         bgColor: "#141414",
         container: "#222222",
       };

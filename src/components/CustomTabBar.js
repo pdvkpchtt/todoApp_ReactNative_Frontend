@@ -12,13 +12,24 @@ import ChangeTheme from "../configs/ChangeTheme";
 import ActiveTabIcon from "../shared/Icons/ActiveTabIcon";
 import TabBarComponent from "./TabBarComponent";
 
+import HomeIcon from "../shared/Icons/HomeIcon";
+import ProfileIcon from "../shared/Icons/ProfileIcon";
+import SunIcon from "../shared/Icons/SunIcon";
+import MoonIcon from "../shared/Icons/MoonIcon";
+
 const CustomTabBar = ({
   state: { index: activeIndex, routes },
   navigation,
-  description,
+  descriptors,
 }) => {
   const { bottom } = useSafeAreaInsets();
   const theme = useSelector((state) => state.theme.theme);
+
+  const icons = [
+    theme.includes("_dark") ? <MoonIcon /> : <SunIcon />,
+    <HomeIcon />,
+    <ProfileIcon />,
+  ];
 
   const reducer = (state, action) => {
     return [...state, { x: action.x, index: action.index }];
@@ -41,13 +52,12 @@ const CustomTabBar = ({
         {
           translateX: withSpring(xOffset.value, {
             duration: 250,
-            damping: 35,
+            damping: 15,
           }),
         },
       ],
     };
   }, []);
-
   return (
     <View
       style={[
@@ -71,8 +81,12 @@ const CustomTabBar = ({
             onPress={() => navigation.navigate(route.name)}
             onLayout={(e) => handeLayout(e, index)}
             componentStyle={styles.component}
-            circleStyle={styles.componentCircle}
+            circleStyle={[
+              styles.componentCircle,
+              { backgroundColor: ChangeTheme(theme).accent },
+            ]}
             iconStyle={styles.iconContainer}
+            icon={icons[index]}
           />
         ))}
       </View>
@@ -99,7 +113,6 @@ const styles = StyleSheet.create({
   componentCircle: {
     flex: 1,
     borderRadius: 30,
-    backgroundColor: "#fff",
   },
   iconContainer: {
     position: "absolute",
@@ -109,10 +122,6 @@ const styles = StyleSheet.create({
     right: 0,
     justifyContent: "center",
     alignItems: "center",
-  },
-  icon: {
-    height: 36,
-    width: 36,
   },
 });
 
