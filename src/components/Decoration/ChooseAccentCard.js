@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Pressable, ScrollView, View } from "react-native";
 
@@ -18,39 +17,8 @@ const allThemes = [
 ];
 
 const ChooseAccentCard = ({ ...props }) => {
-  useEffect(() => {
-    renderCards();
-  }, [theme]);
-
   const theme = useSelector((state) => state.theme.theme);
   const dispatch = useDispatch();
-
-  const renderCards = () =>
-    allThemes.map((item, index) => (
-      <Pressable
-        key={index}
-        onPress={() =>
-          theme.includes("_dark")
-            ? dispatch(themeSlice.actions.setTheme(item + "_dark"))
-            : dispatch(themeSlice.actions.setTheme(item))
-        }
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: ChangeTheme(item).accent,
-          width: 60,
-          height: 75,
-          borderRadius: 8,
-          marginLeft: index == 0 ? 13.5 : 2.5,
-          marginRight: index == allThemes.length - 1 ? 13.5 : 2.5,
-          borderColor: ChangeTheme(item).subAccent,
-          borderWidth: 2,
-        }}
-      >
-        <AnimatedCheckIcon active={theme.replace("_dark", "") === item} />
-      </Pressable>
-    ));
 
   return (
     <View
@@ -68,7 +36,37 @@ const ChooseAccentCard = ({ ...props }) => {
         showsHorizontalScrollIndicator={false}
         overScrollMode="never"
       >
-        {renderCards()}
+        {allThemes.map((item, index) => (
+          <Pressable
+            key={index}
+            onPress={() =>
+              theme.includes("_dark")
+                ? dispatch(themeSlice.actions.setTheme(item + "_dark"))
+                : dispatch(themeSlice.actions.setTheme(item))
+            }
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: ChangeTheme(item).accent,
+              width: 60,
+              height: 75,
+              borderRadius: 8,
+              marginLeft: index == 0 ? 13.5 : 2.5,
+              marginRight: index == allThemes.length - 1 ? 13.5 : 2.5,
+              borderColor: ChangeTheme(item).subAccent,
+              borderWidth: 2,
+            }}
+          >
+            <AnimatedCheckIcon
+              active={
+                theme.includes("_dark")
+                  ? theme.replace("_dark", "") == item
+                  : theme == item
+              }
+            />
+          </Pressable>
+        ))}
       </ScrollView>
       {/* <CustomSwitch
         value={theme.includes("_dark")}
