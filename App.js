@@ -1,11 +1,9 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, Text, View } from "react-native";
 import { useFonts } from "expo-font";
 import { Provider } from "react-redux";
-import { useSelector, useDispatch } from "react-redux";
 
 import { store } from "./src/store";
-import TabBar from "./src/components/TabBar";
+import NavigationHandler from "./src/components/NavigationHandler";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -27,7 +25,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <TabBar />
+      <NavigationHandler />
 
       <StatusBar style="light" />
     </Provider>

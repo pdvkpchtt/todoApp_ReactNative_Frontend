@@ -1,11 +1,13 @@
 const ChangeTheme = (theme) => {
   const defaultParamsLight = {
     divider: "#e8e9ed",
+    whitePressed: "#afafaf",
     textMain: "#2c2c2c",
     textSecondary: "#626d7a",
   };
   const defaultParamsDark = {
     divider: "#252525",
+    whitePressed: "#afafaf",
     textMain: "#fff",
     textSecondary: "#929292",
   };
@@ -63,7 +65,7 @@ const ChangeTheme = (theme) => {
       return {
         ...defaultParamsLight,
         accent: "#9E2232",
-        subAccent: "#6D252E",
+        subAccent: "#DF6170",
         bgColor: "#e6e6e8",
         container: "#fff",
       };
@@ -71,7 +73,7 @@ const ChangeTheme = (theme) => {
       return {
         ...defaultParamsDark,
         accent: "#9E2232",
-        subAccent: "#6D252E",
+        subAccent: "#DF6170",
         bgColor: "#141414",
         container: "#222222",
       };

@@ -1,11 +1,32 @@
-import { ScrollView, Text } from "react-native";
-import Layout from "../../shared/Layout";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import CreateNote from "./CreateNote";
+import Home from "./Home";
+
+const Stack = createNativeStackNavigator();
 
 const HomeStackScreen = () => {
   return (
-    <Layout>
-      <Text>Home</Text>
-    </Layout>
+    <Stack.Navigator
+      initialRouteName={"HomeScreen"}
+      screenOptions={{
+        headerTitleStyle: {
+          fontSize: 20,
+          lineHeight: 30,
+          fontFamily: "SF-Pro-Display-Medium",
+        },
+        headerTitleAlign: "center",
+      }}
+    >
+      <Stack.Screen
+        name="HomeScreen"
+        // options={{
+        //   headerShown: false,
+        //   animation: "slide_from_right",
+        // }}
+        component={Home}
+      />
+    </Stack.Navigator>
   );
 };
 

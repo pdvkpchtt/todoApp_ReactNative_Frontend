@@ -13,6 +13,7 @@ const TextMain = ({ text, ...props }) => {
         fontSize: 18,
         color: ChangeTheme(theme).textMain,
       }}
+      {...props}
     >
       {text}
     </Text>
