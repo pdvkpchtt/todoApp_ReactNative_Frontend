@@ -5,13 +5,14 @@ import Animated, {
 import Svg, { Path } from "react-native-svg";
 
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
+const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 const AnimatedCheckIcon = ({ active, ...props }) => {
   const animatedCheckStyle = useAnimatedStyle(() => {
     return {
-      // opacity: withSpring(active ? 1 : 0, { duration: 250, damping: 35 }),
-      scaleX: withSpring(active ? 1 : 0, { duration: 250, damping: 35 }),
-      scaleY: withSpring(active ? 1 : 0, { duration: 250, damping: 35 }),
+      opacity: withSpring(active ? 1 : 0, { duration: 250, damping: 35 }),
+      // scaleX: withSpring(active ? 1 : 0, { duration: 250, damping: 35 }),
+      // scaleY: withSpring(active ? 1 : 0, { duration: 250, damping: 35 }),
     };
   }, [active]);
 
@@ -21,15 +22,15 @@ const AnimatedCheckIcon = ({ active, ...props }) => {
       width="40px"
       height="40px"
       viewBox="0 0 24 24"
-      style={animatedCheckStyle}
       {...props}
     >
-      <Path
+      <AnimatedPath
         fill="none"
         stroke="white"
         stroke-linecap="round"
         stroke-linejoin="round"
         stroke-width="2"
+        style={animatedCheckStyle}
         d="m4 12l6 6L20 6"
       />
     </AnimatedSvg>

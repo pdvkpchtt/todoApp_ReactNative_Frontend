@@ -9,7 +9,7 @@ const TextMain = ({ text, ...props }) => {
   return (
     <Text
       style={{
-        fontFamily: "Roboto-Regular",
+        fontFamily: "SF-Pro-Display-Regular",
         fontSize: 18,
         color: ChangeTheme(theme).textMain,
       }}

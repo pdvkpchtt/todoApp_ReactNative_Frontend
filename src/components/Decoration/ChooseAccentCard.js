@@ -58,24 +58,10 @@ const ChooseAccentCard = ({ ...props }) => {
               borderWidth: 2,
             }}
           >
-            <AnimatedCheckIcon
-              active={
-                theme.includes("_dark")
-                  ? theme.replace("_dark", "") == item
-                  : theme == item
-              }
-            />
+            <AnimatedCheckIcon active={theme.replace("_dark", "") == item} />
           </Pressable>
         ))}
       </ScrollView>
-      {/* <CustomSwitch
-        value={theme.includes("_dark")}
-        onValueChange={() =>
-          theme.includes("_dark")
-            ? dispatch(themeSlice.actions.setTheme("theme_usual"))
-            : dispatch(themeSlice.actions.setTheme("theme_usual_dark"))
-        }
-      /> */}
     </View>
   );
 };

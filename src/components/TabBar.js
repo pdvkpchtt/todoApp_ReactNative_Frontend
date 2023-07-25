@@ -27,7 +27,11 @@ const TabBar = () => {
         initialRouteName="Home"
         tabBar={(props) => <CustomTabBar {...props} />}
         screenOptions={{
-          headerTitleStyle: { fontSize: 20, lineHeight: 30 },
+          headerTitleStyle: {
+            fontSize: 20,
+            lineHeight: 30,
+            fontFamily: "SF-Pro-Display-Medium",
+          },
           headerTitleAlign: "center",
           // headerStyle: {
           //   borderBottomRightRadius: 35,
