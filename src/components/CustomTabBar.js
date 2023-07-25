@@ -14,7 +14,6 @@ import TabBarComponent from "./TabBarComponent";
 
 import HomeIcon from "../shared/Icons/HomeIcon";
 import ProfileIcon from "../shared/Icons/ProfileIcon";
-import AnimatedSunIcon from "../shared/Icons/AnimatedSunIcon";
 import DecorationIcon from "../shared/Icons/DecorationIcon";
 
 const CustomTabBar = ({

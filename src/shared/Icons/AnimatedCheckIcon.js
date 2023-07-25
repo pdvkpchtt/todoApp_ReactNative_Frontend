@@ -13,7 +13,7 @@ const AnimatedCheckIcon = ({ active, ...props }) => {
       scaleX: withSpring(active ? 1 : 0, { duration: 250, damping: 35 }),
       scaleY: withSpring(active ? 1 : 0, { duration: 250, damping: 35 }),
     };
-  });
+  }, [active]);
 
   return (
     <AnimatedSvg

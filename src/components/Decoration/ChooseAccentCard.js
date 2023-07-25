@@ -20,7 +20,7 @@ const allThemes = [
 const ChooseAccentCard = ({ ...props }) => {
   useEffect(() => {
     renderCards();
-  }, []);
+  }, [theme]);
 
   const theme = useSelector((state) => state.theme.theme);
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const ChooseAccentCard = ({ ...props }) => {
           marginLeft: index == 0 ? 13.5 : 2.5,
           marginRight: index == allThemes.length - 1 ? 13.5 : 2.5,
           borderColor: ChangeTheme(item).subAccent,
-          borderWidth: 5,
+          borderWidth: 2,
         }}
       >
         <AnimatedCheckIcon active={theme.replace("_dark", "") === item} />
