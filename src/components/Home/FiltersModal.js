@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import Modal from "react-native-modal";
 import { useSelector } from "react-redux";
 
@@ -37,8 +37,8 @@ const FiltersModal = ({ visible, setVisible }) => {
           style={{
             backgroundColor: ChangeTheme(theme).accent,
             height: 55,
-            borderTopLeftRadius: 35,
-            borderTopRightRadius: 35,
+            borderTopLeftRadius: 13,
+            borderTopRightRadius: 13,
             elevation: 3,
             display: "flex",
             flexDirection: "row",

@@ -1,7 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import CreateNote from "./CreateNote";
-import Home from "./Home";
+import Home from "./Home/Home";
 
 const Stack = createNativeStackNavigator();
 

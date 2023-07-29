@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useSelector } from "react-redux";
 
 import ChangeTheme from "../configs/ChangeTheme";
-import CreateNote from "../pages/Home/CreateNote";
+import CreateNote from "../pages/Home/CreateNote/CreateNote";
 import TabBar from "./TabBar";
 
 const Stack = createNativeStackNavigator();
