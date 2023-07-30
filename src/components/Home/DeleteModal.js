@@ -4,9 +4,11 @@ import { useSelector } from "react-redux";
 
 import ChangeTheme from "../../configs/ChangeTheme";
 
-import CheckIcon from "../../shared/Icons/CheckIcon";
+import CrossIcon from "../../shared/Icons/CrossIcon";
+import TextMain from "../../shared/Text/TextMain";
+import CustomButton from "../../shared/ui/CustomButton";
 
-const FiltersModal = ({ visible, setVisible }) => {
+const DeleteModal = ({ visible, setVisible, head, id }) => {
   const theme = useSelector((state) => state.theme.theme);
 
   return (
@@ -23,14 +25,13 @@ const FiltersModal = ({ visible, setVisible }) => {
         marginBottom: 16,
       }}
     >
-      {/* header */}
       <View
         style={{
-          height: 300,
           backgroundColor: ChangeTheme(theme).bgColor,
           borderRadius: 35,
         }}
       >
+        {/* header */}
         <View
           style={{
             backgroundColor: ChangeTheme(theme).accent,
@@ -45,31 +46,45 @@ const FiltersModal = ({ visible, setVisible }) => {
             paddingHorizontal: 17.5,
           }}
         >
-          <CheckIcon fill={ChangeTheme(theme).accent} />
+          <CrossIcon fill={ChangeTheme(theme).accent} />
           <Text
             style={{
               fontSize: 20,
               lineHeight: 30,
               fontFamily: "SF-Pro-Display-Medium",
               color: "#fff",
+              flex: 1,
+              textAlign: "center",
+              marginHorizontal: 16,
             }}
+            numberOfLines={1}
           >
-            Filters
+            {head}
           </Text>
           <Pressable onPress={() => setVisible(false)}>
             {({ pressed }) => {
               return (
-                <CheckIcon
+                <CrossIcon
                   fill={pressed ? ChangeTheme(theme).whitePressed : "#fff"}
                 />
               );
             }}
           </Pressable>
         </View>
+        {/* header */}
+
+        {/* body */}
+        <View
+          style={{
+            padding: 16,
+          }}
+        >
+          <CustomButton text="Delete" onPress={() => setVisible(false)} />
+        </View>
+        {/* body */}
       </View>
-      {/* header */}
     </Modal>
   );
 };
 
-export default FiltersModal;
+export default DeleteModal;

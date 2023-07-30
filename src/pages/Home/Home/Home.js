@@ -5,10 +5,13 @@ import { useSelector } from "react-redux";
 import Layout from "../../../shared/Layout";
 import FAB from "../../../shared/ui/FAB";
 import ChangeTheme from "../../../configs/ChangeTheme";
-
-import FiltersIcon from "../../../shared/Icons/FiltersIcon";
 import FiltersModal from "../../../components/Home/FiltersModal";
 import CategoryBage from "../../../shared/ui/CategoryBage";
+import NoteCard from "../../../components/Home/NoteCard";
+
+import FiltersIcon from "../../../shared/Icons/FiltersIcon";
+
+import notes from "../../../data/notes";
 
 const Home = ({ navigation }) => {
   const theme = useSelector((state) => state.theme.theme);
@@ -45,6 +48,7 @@ const Home = ({ navigation }) => {
 
   return (
     <Layout>
+      {/* delete later */}
       <View
         style={{
           backgroundColor: ChangeTheme(theme).container,
@@ -57,6 +61,11 @@ const Home = ({ navigation }) => {
         <CategoryBage category="work" marginTop={5} />
         <CategoryBage category="learning" marginTop={5} />
       </View>
+      {/* delete later */}
+
+      {notes.map((item, index) => (
+        <NoteCard key={index} item={item} marginTop={12} />
+      ))}
 
       <FiltersModal visible={modalState} setVisible={setModalState} />
       <FAB onPress={() => navigation.navigate("CreateNoteScreen")} />

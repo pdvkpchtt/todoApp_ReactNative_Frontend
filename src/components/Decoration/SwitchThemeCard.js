@@ -21,10 +21,14 @@ const SwitchThemeCard = ({ ...props }) => {
       alignItems="center"
       {...props}
     >
-      <View style={{ display: "flex", flexDirection: "row" }}>
+      <View style={{ display: "flex", flexDirection: "row", flex: 1 }}>
         <ColorPaletteIcon fill={ChangeTheme(theme).subAccent} />
 
-        <TextMain text="Switch to darkmode" marginLeft={8} />
+        <TextMain
+          text="Switch to darkmode"
+          numberOfLines={1}
+          additionStyles={{ marginLeft: 8, fontSize: 18, flex: 1 }}
+        />
       </View>
 
       <CustomSwitch

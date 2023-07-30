@@ -3,15 +3,15 @@ import { useSelector } from "react-redux";
 
 import ChangeTheme from "../../configs/ChangeTheme";
 
-const TextMain = ({ text, additionStyles, ...props }) => {
+const TextHead = ({ text, additionStyles, ...props }) => {
   const theme = useSelector((state) => state.theme.theme);
 
   return (
     <Text
       style={[
         {
-          fontFamily: "SF-Pro-Display-Regular",
-          fontSize: 16,
+          fontFamily: "SF-Pro-Display-Medium",
+          fontSize: 18,
           color: ChangeTheme(theme).textMain,
         },
         additionStyles,
@@ -23,4 +23,4 @@ const TextMain = ({ text, additionStyles, ...props }) => {
   );
 };
 
-export default TextMain;
+export default TextHead;

@@ -13,8 +13,8 @@ const Card = ({ children, ...props }) => {
         paddingHorizontal: 16,
         paddingVertical: 14,
         borderRadius: 13,
+        ...props,
       }}
-      {...props}
     >
       {children}
     </View>
