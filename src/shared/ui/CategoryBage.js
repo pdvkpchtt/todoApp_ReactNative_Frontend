@@ -1,12 +1,17 @@
 import { View, Text } from "react-native";
+import { useSelector } from "react-redux";
+
+import ChangeTheme from "../../configs/ChangeTheme";
 
 const CategoryBage = ({ category = "uncategorized", ...props }) => {
+  const theme = useSelector((state) => state.theme.theme);
+
   switch (category) {
     case "uncategorized":
       return (
         <View
           style={{
-            backgroundColor: "rgba(90, 200, 250, 0.20)",
+            backgroundColor: ChangeTheme(theme).uncategorizedBg,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -20,7 +25,7 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
           <Text
             style={{
               fontFamily: "SF-Pro-Display-Medium",
-              color: "rgba(90, 200, 250, 1)",
+              color: ChangeTheme(theme).uncategorized,
             }}
           >
             Uncategorized
@@ -31,7 +36,7 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
       return (
         <View
           style={{
-            backgroundColor: "rgba(52, 199, 89, 0.20)",
+            backgroundColor: ChangeTheme(theme).travelBg,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -45,7 +50,7 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
           <Text
             style={{
               fontFamily: "SF-Pro-Display-Medium",
-              color: "rgba(52, 199, 89, 1)",
+              color: ChangeTheme(theme).travel,
             }}
           >
             Travel
@@ -56,7 +61,7 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
       return (
         <View
           style={{
-            backgroundColor: "rgba(255, 59, 48, 0.20)",
+            backgroundColor: ChangeTheme(theme).workBg,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -70,7 +75,7 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
           <Text
             style={{
               fontFamily: "SF-Pro-Display-Medium",
-              color: "rgba(255, 59, 48, 1)",
+              color: ChangeTheme(theme).work,
             }}
           >
             Work
@@ -81,7 +86,7 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
       return (
         <View
           style={{
-            backgroundColor: "rgba(255, 149, 0, 0.20)",
+            backgroundColor: ChangeTheme(theme).learningBg,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -95,7 +100,7 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
           <Text
             style={{
               fontFamily: "SF-Pro-Display-Medium",
-              color: "rgba(255, 149, 0, 1)",
+              color: ChangeTheme(theme).learning,
             }}
           >
             Learning

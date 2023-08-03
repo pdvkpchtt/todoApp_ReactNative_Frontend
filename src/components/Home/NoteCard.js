@@ -39,14 +39,12 @@ const NoteCard = ({ item, ...props }) => {
               numberOfLines={1}
               additionStyles={{ marginRight: 16, flex: 1 }}
             />
-            <Pressable
-              onPress={() => setBookmarkedState(!bookmarkedState)}
-              style={{ display: "flex", flexDirection: "row" }}
-            >
+            <View style={{ display: "flex", flexDirection: "row" }}>
               <CategoryBage category={item.category} marginRight={8} />
-
-              <BookmarkIcon active={bookmarkedState} />
-            </Pressable>
+              <Pressable onPress={() => setBookmarkedState(!bookmarkedState)}>
+                <BookmarkIcon active={bookmarkedState} />
+              </Pressable>
+            </View>
           </View>
           <TextMain
             additionStyles={{ color: ChangeTheme(theme).textSecondary }}

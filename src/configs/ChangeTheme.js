@@ -1,11 +1,24 @@
 const ChangeTheme = (theme) => {
+  const defaultParams = {
+    uncategorizedBg: "rgba(90, 200, 250, 0.20)",
+    uncategorized: "rgba(90, 200, 250, 1)",
+    travelBg: "rgba(52, 199, 89, 0.20)",
+    travel: "rgba(52, 199, 89, 1)",
+    workBg: "rgba(255, 59, 48, 0.20)",
+    work: "rgba(255, 59, 48, 1)",
+    learningBg: "rgba(255, 149, 0, 0.20)",
+    learning: "rgba(255, 149, 0, 1)",
+  };
+
   const defaultParamsLight = {
+    ...defaultParams,
     divider: "#e8e9ed",
     whitePressed: "#afafaf",
     textMain: "#2c2c2c",
     textSecondary: "#626d7a",
   };
   const defaultParamsDark = {
+    ...defaultParams,
     divider: "#252525",
     whitePressed: "#afafaf",
     textMain: "#fff",

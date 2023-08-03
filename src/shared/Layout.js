@@ -12,8 +12,8 @@ const Layout = ({ children, ...props }) => {
         flex: 1,
         padding: 16,
         // backgroundColor: ChangeTheme(theme).bgColor,
+        ...props,
       }}
-      {...props}
     >
       {children}
     </View>
