@@ -11,8 +11,8 @@ import LoadingBox from "./LoadingBox";
 
 const NotesList = () => {
   const theme = useSelector((state) => state.theme.theme);
-  const [notes, refreshing] = useSelector(
-    (state) => [state.notes.notes, state.notes.refreshing],
+  const [filteredNotes, refreshing] = useSelector(
+    (state) => [state.notes.filteredNotes, state.notes.refreshing],
     shallowEqual
   );
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const NotesList = () => {
         <LoadingBox />
       ) : (
         <FlashList
-          data={notes}
+          data={filteredNotes}
           renderItem={renderItem}
           refreshing={refreshing}
           estimatedItemSize={123}

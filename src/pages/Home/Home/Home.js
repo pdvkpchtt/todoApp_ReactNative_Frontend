@@ -9,6 +9,7 @@ import FiltersModal from "../../../components/Home/FiltersModal";
 
 import FiltersIcon from "../../../shared/Icons/FiltersIcon";
 import NotesList from "../../../components/Home/NotesList";
+import SearchNotes from "../../../components/Home/SearchNotes";
 
 const Home = ({ navigation }) => {
   const theme = useSelector((state) => state.theme.theme);
@@ -47,8 +48,10 @@ const Home = ({ navigation }) => {
     <Layout padding={0}>
       <NotesList />
 
+      <SearchNotes />
+
       <FiltersModal visible={modalState} setVisible={setModalState} />
-      <FAB onPress={() => navigation.navigate("CreateNoteScreen")} />
+      {/* <FAB onPress={() => navigation.navigate("CreateNoteScreen")} /> */}
     </Layout>
   );
 };

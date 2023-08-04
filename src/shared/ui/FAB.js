@@ -5,7 +5,7 @@ import ChangeTheme from "../../configs/ChangeTheme";
 
 import PlusIcon from "../Icons/PlusIcon";
 
-const FAB = ({ onPress }) => {
+const FAB = ({ onPress, bottom = 20, right = 20 }) => {
   const theme = useSelector((state) => state.theme.theme);
 
   return (
@@ -13,8 +13,8 @@ const FAB = ({ onPress }) => {
       onPress={onPress}
       style={{
         position: "absolute",
-        bottom: 20,
-        right: 20,
+        bottom: bottom,
+        right: right,
       }}
     >
       {({ pressed }) => {
