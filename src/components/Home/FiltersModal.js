@@ -1,16 +1,21 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { Pressable, Text, View } from "react-native";
 import Modal from "react-native-modal";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import ChangeTheme from "../../configs/ChangeTheme";
 import TextMain from "../../shared/Text/TextMain";
 import CustomCheckbox from "../../shared/ui/CustomCheckbox";
+import { notesSlice } from "../../store/notesSlice";
 
-import CrossIcon from "../../shared/Icons/CrossIcon";
+import CheckIcon from "../../shared/Icons/CheckIcon";
 import RefreshIcon from "../../shared/Icons/RefreshIcon";
 
 const FiltersModal = ({ visible, setVisible }) => {
   const theme = useSelector((state) => state.theme.theme);
+  const dispatch = useDispatch();
+
+  const [filterState, setFilterState] = useState("");
 
   const filters = [
     {
@@ -70,7 +75,13 @@ const FiltersModal = ({ visible, setVisible }) => {
             paddingHorizontal: 17.5,
           }}
         >
-          <Pressable onPress={() => setVisible(false)}>
+          <Pressable
+            onPress={() => {
+              setFilterState("");
+              dispatch(notesSlice.actions.updateNotes());
+              setVisible(false);
+            }}
+          >
             {({ pressed }) => {
               return (
                 <RefreshIcon
@@ -89,10 +100,15 @@ const FiltersModal = ({ visible, setVisible }) => {
           >
             Filters
           </Text>
-          <Pressable onPress={() => setVisible(false)}>
+          <Pressable
+            onPress={() => {
+              dispatch(notesSlice.actions.setFilter(filterState.toLowerCase()));
+              setVisible(false);
+            }}
+          >
             {({ pressed }) => {
               return (
-                <CrossIcon
+                <CheckIcon
                   fill={pressed ? ChangeTheme(theme).whitePressed : "#fff"}
                 />
               );
@@ -111,7 +127,7 @@ const FiltersModal = ({ visible, setVisible }) => {
           }}
         >
           {filters.map((item, index) => (
-            <View
+            <Pressable
               key={index}
               style={{
                 backgroundColor: item.colorBg,
@@ -120,6 +136,9 @@ const FiltersModal = ({ visible, setVisible }) => {
                 display: "flex",
                 flexDirection: "row",
                 marginTop: index == 0 ? 0 : 12,
+              }}
+              onPress={() => {
+                setFilterState(item.name);
               }}
             >
               <TextMain
@@ -132,8 +151,11 @@ const FiltersModal = ({ visible, setVisible }) => {
                 }}
                 numberOfLines={1}
               />
-              <CustomCheckbox color={item.color} />
-            </View>
+              <CustomCheckbox
+                active={filterState == item.name}
+                color={item.color}
+              />
+            </Pressable>
           ))}
         </View>
         {/* body */}

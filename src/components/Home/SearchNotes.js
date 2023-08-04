@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Pressable, TextInput, View } from "react-native";
+import { Keyboard, Pressable, TextInput, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
 import ChangeTheme from "../../configs/ChangeTheme";
@@ -52,6 +52,7 @@ const SearchNotes = () => {
           onPress={() => {
             setInputState("");
             dispatch(notesSlice.actions.updateNotes());
+            Keyboard.dismiss();
           }}
         >
           {({ pressed }) => {

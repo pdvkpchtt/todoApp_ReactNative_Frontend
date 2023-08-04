@@ -1,15 +1,16 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import Modal from "react-native-modal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import ChangeTheme from "../../configs/ChangeTheme";
 
 import CrossIcon from "../../shared/Icons/CrossIcon";
-import TextMain from "../../shared/Text/TextMain";
+import { notesSlice } from "../../store/notesSlice";
 import CustomButton from "../../shared/ui/CustomButton";
 
-const DeleteModal = ({ visible, setVisible, head, id }) => {
+const DeleteModal = ({ visible, setVisible, item }) => {
   const theme = useSelector((state) => state.theme.theme);
+  const dispatch = useDispatch();
 
   return (
     <Modal
@@ -59,7 +60,7 @@ const DeleteModal = ({ visible, setVisible, head, id }) => {
             }}
             numberOfLines={1}
           >
-            {head}
+            {item.head}
           </Text>
           <Pressable onPress={() => setVisible(false)}>
             {({ pressed }) => {
@@ -79,7 +80,13 @@ const DeleteModal = ({ visible, setVisible, head, id }) => {
             padding: 16,
           }}
         >
-          <CustomButton text="Delete" onPress={() => setVisible(false)} />
+          <CustomButton
+            text="Delete"
+            onPress={() => {
+              dispatch(notesSlice.actions.deleteNote(item.id));
+              setVisible(false);
+            }}
+          />
         </View>
         {/* body */}
       </View>

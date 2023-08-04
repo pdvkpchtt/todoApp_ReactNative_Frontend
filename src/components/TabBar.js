@@ -13,6 +13,7 @@ const TabBar = () => {
       initialRouteName="Home"
       tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
+        tabBarHideOnKeyboard: true,
         headerTitleStyle: {
           fontSize: 20,
           lineHeight: 30,

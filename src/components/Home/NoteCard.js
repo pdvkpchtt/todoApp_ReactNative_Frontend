@@ -57,8 +57,7 @@ const NoteCard = ({ item, ...props }) => {
       <DeleteModal
         visible={modalState}
         setVisible={setModalState}
-        head={item.head}
-        id={item.id}
+        item={item}
       />
     </>
   );
