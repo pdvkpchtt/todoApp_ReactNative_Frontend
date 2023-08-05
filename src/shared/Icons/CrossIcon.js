@@ -1,10 +1,10 @@
 import Svg, { Path } from "react-native-svg";
 
-const CrossIcon = ({ fill = "#fff", ...props }) => (
+const CrossIcon = ({ fill = "#fff", size = 20, ...props }) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
+    width={size}
+    height={size}
     viewBox="0 0 15 15"
     {...props}
   >
