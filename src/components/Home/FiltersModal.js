@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import Modal from "react-native-modal";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,9 +13,15 @@ import RefreshIcon from "../../shared/Icons/RefreshIcon";
 
 const FiltersModal = ({ visible, setVisible }) => {
   const theme = useSelector((state) => state.theme.theme);
+  const category = useSelector((state) => state.notes.category);
   const dispatch = useDispatch();
 
   const [filterState, setFilterState] = useState("");
+
+  useEffect(() => {
+    if (category == "") setFilterState("");
+    else setFilterState(category[0].toUpperCase() + category.slice(1));
+  }, [category]);
 
   const filters = [
     {

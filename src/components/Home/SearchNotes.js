@@ -38,6 +38,10 @@ const SearchNotes = () => {
           style={{ color: ChangeTheme(theme).textMain, fontSize: 16, flex: 1 }}
           placeholder="Search notes"
           placeholderTextColor={ChangeTheme(theme).textSecondary}
+          onFocus={() => {
+            dispatch(notesSlice.actions.setFilter(""));
+            dispatch(notesSlice.actions.updateNotes());
+          }}
           onChange={(e) => {
             setInputState(e.nativeEvent.text);
             dispatch(notesSlice.actions.filterNotes(e.nativeEvent.text));

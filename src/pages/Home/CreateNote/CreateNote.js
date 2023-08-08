@@ -12,10 +12,22 @@ const CreateNote = ({ navigation }) => {
   const theme = useSelector((state) => state.theme.theme);
   const dispatch = useDispatch();
 
+  const [headState, setHeadState] = useState("");
+  const [textState, setTextState] = useState("");
+  const [categoryState, setCategoryState] = useState("");
+  const [invalidState, setInvalidState] = useState(false);
+
+  const isInvalid =
+    headState.length == 0 || textState.length == 0 || categoryState.length == 0;
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <Pressable onPress={() => {}}>
+        <Pressable
+          onPress={() => {
+            isInvalid ? setInvalidState(true) : false;
+          }}
+        >
           {({ pressed }) => {
             return (
               <CheckIcon
@@ -42,28 +54,27 @@ const CreateNote = ({ navigation }) => {
     });
   }, [theme]);
 
-  const [headState, setHeadState] = useState("");
-  const [textState, setTextState] = useState("");
-  const [categoryState, setCategoryState] = useState("");
-  const [invalidState, setInvalidState] = useState(false);
-
   return (
     <ScrollView overScrollMode="never" contentContainerStyle={{ padding: 16 }}>
       <InputWithTitle
-        title="Enter header"
-        placeholder="Note header"
+        title="Title of your note"
+        placeholder="Enter title"
         onChange={(e) => setHeadState(e)}
         value={headState}
         marginBottom={12}
         invalid={invalidState}
+        numberOfLines={2}
+        maxLength={100}
       />
       <InputWithTitle
-        title="Enter note text"
-        placeholder="Note text"
+        title="Text of your note"
+        placeholder="Enter text"
         onChange={(e) => setTextState(e)}
         value={textState}
         marginBottom={12}
         invalid={invalidState}
+        numberOfLines={8}
+        maxLength={1000}
       />
     </ScrollView>
   );

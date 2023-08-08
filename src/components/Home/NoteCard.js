@@ -1,20 +1,21 @@
 import { useState } from "react";
 import { Pressable, TouchableOpacity, View, Vibration } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import ChangeTheme from "../../configs/ChangeTheme";
-import BookmarkIcon from "../../shared/Icons/BookmarkIcon";
 import TextHead from "../../shared/Text/TextHead";
-
 import TextMain from "../../shared/Text/TextMain";
 import Card from "../../shared/ui/Card";
 import CategoryBage from "../../shared/ui/CategoryBage";
 import DeleteModal from "./DeleteModal";
+import { notesSlice } from "../../store/notesSlice";
+
+import BookmarkIcon from "../../shared/Icons/BookmarkIcon";
 
 const NoteCard = ({ item, ...props }) => {
   const theme = useSelector((state) => state.theme.theme);
+  const dispatch = useDispatch();
 
-  const [bookmarkedState, setBookmarkedState] = useState(item.bookmarked);
   const [modalState, setModalState] = useState(false);
 
   return (
@@ -41,8 +42,12 @@ const NoteCard = ({ item, ...props }) => {
             />
             <View style={{ display: "flex", flexDirection: "row" }}>
               <CategoryBage category={item.category} marginRight={8} />
-              <Pressable onPress={() => setBookmarkedState(!bookmarkedState)}>
-                <BookmarkIcon active={bookmarkedState} />
+              <Pressable
+                onPress={() =>
+                  dispatch(notesSlice.actions.setBookmarked(item.id))
+                }
+              >
+                <BookmarkIcon active={item.bookmarked} />
               </Pressable>
             </View>
           </View>

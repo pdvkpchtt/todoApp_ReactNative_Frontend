@@ -34,5 +34,16 @@ export const notesSlice = createSlice({
       state.notes = state.notes.filter((item) => item.id != action.payload);
       state.filteredNotes = state.notes;
     },
+    setBookmarked: (state, action) => {
+      return {
+        ...state,
+        filteredNotes: state.filteredNotes.map((item, index) =>
+          action.payload == index
+            ? { ...item, bookmarked: !item.bookmarked }
+            : { ...item }
+        ),
+        notes: state.filteredNotes,
+      };
+    },
   },
 });

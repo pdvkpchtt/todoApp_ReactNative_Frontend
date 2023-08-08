@@ -1,4 +1,3 @@
-import React from "react";
 import { Pressable, TextInput, View } from "react-native";
 import { useSelector } from "react-redux";
 
@@ -14,16 +13,21 @@ const InputWithTitle = ({
   title = "empty",
   placeholder = "empty",
   invalid = false,
+  numberOfLines = 1,
+  maxLength = 100,
   ...props
 }) => {
   const theme = useSelector((state) => state.theme.theme);
 
   return (
-    <Card {...props}>
+    <View {...props}>
       <View style={{ display: "flex", flexDirection: "row" }}>
         <TextTitle
-          text={title}
-          additionStyles={{ marginBottom: 6 }}
+          text={title + ` (${value.length}/${maxLength})`}
+          additionStyles={{
+            marginBottom: 6,
+            fontFamily: "SF-Pro-Display-Medium",
+          }}
           numberOfLines={1}
           flex={1}
           marginRight={8}
@@ -46,27 +50,30 @@ const InputWithTitle = ({
       </View>
 
       <TextInput
+        textAlignVertical="top"
         value={value}
         onChange={(e) => onChange(e.nativeEvent.text)}
         style={{
           backgroundColor: invalid
             ? ChangeTheme(theme).workBg
-            : ChangeTheme(theme).bgColor,
-          borderRadius: 3,
-          paddingHorizontal: 12,
-          paddingVertical: 6,
+            : ChangeTheme(theme).container,
+          borderRadius: 13,
+          padding: 12,
+          alignItems: "flex-start",
           color: ChangeTheme(theme).textMain,
           fontSize: 16,
-          borderColor: "red",
-          borderWidth: invalid ? 1 : 0,
+          borderColor: invalid ? "red" : ChangeTheme(theme).accent,
+          borderWidth: 1,
         }}
         multiline
+        numberOfLines={numberOfLines}
+        maxLength={maxLength}
         placeholder={invalid ? "Please fill this fields!!!" : placeholder}
         placeholderTextColor={
           invalid ? "red" : ChangeTheme(theme).textSecondary
         }
       />
-    </Card>
+    </View>
   );
 };
 
