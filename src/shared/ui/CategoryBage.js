@@ -3,7 +3,11 @@ import { useSelector } from "react-redux";
 
 import ChangeTheme from "../../configs/ChangeTheme";
 
-const CategoryBage = ({ category = "uncategorized", ...props }) => {
+const CategoryBage = ({
+  category = "uncategorized",
+  gray = false,
+  ...props
+}) => {
   const theme = useSelector((state) => state.theme.theme);
 
   switch (category) {
@@ -11,7 +15,9 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
       return (
         <View
           style={{
-            backgroundColor: ChangeTheme(theme).uncategorizedBg,
+            backgroundColor: gray
+              ? ChangeTheme(theme).notSelectedBg
+              : ChangeTheme(theme).uncategorizedBg,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -25,7 +31,9 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
           <Text
             style={{
               fontFamily: "SF-Pro-Display-Medium",
-              color: ChangeTheme(theme).uncategorized,
+              color: gray
+                ? ChangeTheme(theme).notSelected
+                : ChangeTheme(theme).uncategorized,
             }}
           >
             Uncategorized
@@ -36,7 +44,9 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
       return (
         <View
           style={{
-            backgroundColor: ChangeTheme(theme).travelBg,
+            backgroundColor: gray
+              ? ChangeTheme(theme).notSelectedBg
+              : ChangeTheme(theme).travelBg,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -50,7 +60,9 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
           <Text
             style={{
               fontFamily: "SF-Pro-Display-Medium",
-              color: ChangeTheme(theme).travel,
+              color: gray
+                ? ChangeTheme(theme).notSelected
+                : ChangeTheme(theme).travel,
             }}
           >
             Travel
@@ -61,7 +73,9 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
       return (
         <View
           style={{
-            backgroundColor: ChangeTheme(theme).workBg,
+            backgroundColor: gray
+              ? ChangeTheme(theme).notSelectedBg
+              : ChangeTheme(theme).workBg,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -75,7 +89,9 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
           <Text
             style={{
               fontFamily: "SF-Pro-Display-Medium",
-              color: ChangeTheme(theme).work,
+              color: gray
+                ? ChangeTheme(theme).notSelected
+                : ChangeTheme(theme).work,
             }}
           >
             Work
@@ -86,7 +102,9 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
       return (
         <View
           style={{
-            backgroundColor: ChangeTheme(theme).learningBg,
+            backgroundColor: gray
+              ? ChangeTheme(theme).notSelectedBg
+              : ChangeTheme(theme).learningBg,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -100,7 +118,9 @@ const CategoryBage = ({ category = "uncategorized", ...props }) => {
           <Text
             style={{
               fontFamily: "SF-Pro-Display-Medium",
-              color: ChangeTheme(theme).learning,
+              color: gray
+                ? ChangeTheme(theme).notSelected
+                : ChangeTheme(theme).learning,
             }}
           >
             Learning

@@ -35,15 +35,29 @@ export const notesSlice = createSlice({
       state.filteredNotes = state.notes;
     },
     setBookmarked: (state, action) => {
-      return {
+      const newState = {
         ...state,
-        filteredNotes: state.filteredNotes.map((item, index) =>
-          action.payload == index
+        notes: state.notes.map((item, index) =>
+          action.payload == item.id
             ? { ...item, bookmarked: !item.bookmarked }
             : { ...item }
         ),
-        notes: state.filteredNotes,
+        filteredNotes: state.filteredNotes.map((item, index) =>
+          action.payload == item.id
+            ? { ...item, bookmarked: !item.bookmarked }
+            : { ...item }
+        ),
       };
+
+      return newState;
+    },
+    createNote: (state, action) => {
+      const newState = {
+        ...state,
+        notes: [action.payload, ...state.notes],
+      };
+
+      return newState;
     },
   },
 });

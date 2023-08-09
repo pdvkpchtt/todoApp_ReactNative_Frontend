@@ -1,5 +1,7 @@
 const ChangeTheme = (theme) => {
   const defaultParams = {
+    notSelected: "rgba(138, 138, 142, 1);",
+    notSelectedBg: "rgba(138, 138, 142, 0.20);",
     uncategorizedBg: "rgba(90, 200, 250, 0.20)",
     uncategorized: "rgba(90, 200, 250, 1)",
     travelBg: "rgba(52, 199, 89, 0.20)",

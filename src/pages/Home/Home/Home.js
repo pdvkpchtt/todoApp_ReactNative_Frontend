@@ -6,11 +6,11 @@ import Layout from "../../../shared/Layout";
 import FAB from "../../../shared/ui/FAB";
 import ChangeTheme from "../../../configs/ChangeTheme";
 import FiltersModal from "../../../components/Home/FiltersModal";
-
-import FiltersIcon from "../../../shared/Icons/FiltersIcon";
 import NotesList from "../../../components/Home/NotesList";
 import SearchNotes from "../../../components/Home/SearchNotes";
 import CategoryBage from "../../../shared/ui/CategoryBage";
+
+import FiltersIcon from "../../../shared/Icons/FiltersIcon";
 
 const Home = ({ navigation }) => {
   const theme = useSelector((state) => state.theme.theme);

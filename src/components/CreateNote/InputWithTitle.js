@@ -10,6 +10,7 @@ import TrashIcon from "../../shared/Icons/TrachIcon";
 const InputWithTitle = ({
   value = "",
   onChange = () => {},
+  onFocus = () => {},
   title = "empty",
   placeholder = "empty",
   invalid = false,
@@ -65,10 +66,11 @@ const InputWithTitle = ({
           borderColor: invalid ? "red" : ChangeTheme(theme).accent,
           borderWidth: 1,
         }}
+        onFocus={() => onFocus()}
         multiline
         numberOfLines={numberOfLines}
         maxLength={maxLength}
-        placeholder={invalid ? "Please fill this fields!!!" : placeholder}
+        placeholder={invalid ? "Please fill this field!" : placeholder}
         placeholderTextColor={
           invalid ? "red" : ChangeTheme(theme).textSecondary
         }

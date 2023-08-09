@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Pressable, TouchableOpacity, View, Vibration } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import Toast from "react-native-toast-message";
 
 import ChangeTheme from "../../configs/ChangeTheme";
 import TextHead from "../../shared/Text/TextHead";
@@ -43,9 +44,15 @@ const NoteCard = ({ item, ...props }) => {
             <View style={{ display: "flex", flexDirection: "row" }}>
               <CategoryBage category={item.category} marginRight={8} />
               <Pressable
-                onPress={() =>
-                  dispatch(notesSlice.actions.setBookmarked(item.id))
-                }
+                onPress={() => {
+                  dispatch(notesSlice.actions.setBookmarked(item.id));
+                  Toast.show({
+                    type: "custom",
+                    text1: !item.bookmarked
+                      ? "Added to bookmarks"
+                      : "Removed from bookmarks",
+                  });
+                }}
               >
                 <BookmarkIcon active={item.bookmarked} />
               </Pressable>
