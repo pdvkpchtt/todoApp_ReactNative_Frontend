@@ -1,6 +1,7 @@
 import { useLayoutEffect, useState } from "react";
 import { Text, Pressable, ScrollView } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import Toast from "react-native-toast-message";
 
 import ChangeTheme from "../../../configs/ChangeTheme";
 import InputWithTitle from "../../../components/CreateNote/InputWithTitle";
@@ -9,14 +10,17 @@ import { notesSlice } from "../../../store/notesSlice";
 
 import CheckIcon from "../../../shared/Icons/CheckIcon";
 
-const CreateNote = ({ navigation }) => {
+const NoteScreen = ({ navigation, route }) => {
   const theme = useSelector((state) => state.theme.theme);
   const notes = useSelector((state) => state.notes.notes);
   const dispatch = useDispatch();
 
-  const [headState, setHeadState] = useState("");
-  const [textState, setTextState] = useState("");
-  const [categoryState, setCategoryState] = useState("Uncategorized");
+  const [headState, setHeadState] = useState(route.params.item.head);
+  const [textState, setTextState] = useState(route.params.item.text);
+  const [categoryState, setCategoryState] = useState(
+    route.params.item.category[0].toUpperCase() +
+      route.params.item.category.slice(1)
+  );
   const [invalidStateHead, setInvalidStateHead] = useState(false);
   const [invalidStateText, setInvalidStateText] = useState(false);
 
@@ -56,16 +60,17 @@ const CreateNote = ({ navigation }) => {
               : setInvalidStateText(false);
             if (textState.length != 0 && headState.length != 0) {
               dispatch(
-                notesSlice.actions.createNote({
-                  id: notes.length + 1,
+                notesSlice.actions.editNote({
+                  id: route.params.item.id,
                   head: headState,
                   text: textState,
                   category: categoryState.toLowerCase(),
-                  bookmarked: false,
                 })
               );
-              dispatch(notesSlice.actions.updateNotes());
-              navigation.goBack();
+              Toast.show({
+                type: "custom",
+                text1: "Changes saved successfully",
+              });
             }
           }}
         >
@@ -89,11 +94,13 @@ const CreateNote = ({ navigation }) => {
           }}
           numberOfLines={1}
         >
-          Create Note
+          {route.params.item.head.length >= 25
+            ? route.params.item.head.slice(0, 24) + "..."
+            : route.params.item.head}
         </Text>
       ),
     });
-  }, [theme, textState, categoryState, headState]);
+  }, [headState, textState, categoryState, theme]);
 
   return (
     <ScrollView overScrollMode="never" contentContainerStyle={{ padding: 16 }}>
@@ -135,4 +142,4 @@ const CreateNote = ({ navigation }) => {
   );
 };
 
-export default CreateNote;
+export default NoteScreen;

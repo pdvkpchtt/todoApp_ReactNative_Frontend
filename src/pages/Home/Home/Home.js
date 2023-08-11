@@ -63,7 +63,7 @@ const Home = ({ navigation }) => {
 
   return (
     <Layout padding={0}>
-      <NotesList />
+      <NotesList navigation={navigation} />
 
       <SearchNotes />
 

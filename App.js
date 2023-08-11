@@ -33,7 +33,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationHandler />
 
-      <Toast config={toastConfig} position="bottom" bottomOffset="70" />
+      <Toast config={toastConfig} position="bottom" bottomOffset="20" />
 
       <StatusBar style="light" />
     </Provider>

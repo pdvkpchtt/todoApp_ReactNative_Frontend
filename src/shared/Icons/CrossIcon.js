@@ -1,6 +1,6 @@
 import Svg, { Path } from "react-native-svg";
 
-const CrossIcon = ({ fill = "#fff", size = 20, ...props }) => (
+const CrossIcon = ({ fill = "#fff", additionStyle, size = 20, ...props }) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}

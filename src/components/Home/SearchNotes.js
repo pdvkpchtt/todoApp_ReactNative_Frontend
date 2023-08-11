@@ -1,16 +1,39 @@
 import { useState } from "react";
 import { Keyboard, Pressable, TextInput, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
+import Animated, {
+  useAnimatedStyle,
+  withSpring,
+} from "react-native-reanimated";
 
 import ChangeTheme from "../../configs/ChangeTheme";
 import { notesSlice } from "../../store/notesSlice";
 import CrossIcon from "../../shared/Icons/CrossIcon";
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 const SearchNotes = () => {
   const theme = useSelector((state) => state.theme.theme);
   const dispatch = useDispatch();
 
   const [inputState, setInputState] = useState("");
+
+  const animatedCrossStyle = useAnimatedStyle(() => {
+    return {
+      opacity: withSpring(inputState.length > 0 ? 1 : 0, {
+        duration: 150,
+        damping: 35,
+      }),
+      transform: [
+        {
+          rotate: withSpring(inputState.length > 0 ? "-360deg" : "0deg", {
+            duration: 150,
+            damping: 35,
+          }),
+        },
+      ],
+    };
+  }, [inputState]);
 
   return (
     <View
@@ -48,11 +71,14 @@ const SearchNotes = () => {
           }}
         />
 
-        <Pressable
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
+        <AnimatedPressable
+          style={[
+            animatedCrossStyle,
+            {
+              display: "flex",
+              justifyContent: "center",
+            },
+          ]}
           onPress={() => {
             setInputState("");
             dispatch(notesSlice.actions.updateNotes());
@@ -70,7 +96,7 @@ const SearchNotes = () => {
               />
             );
           }}
-        </Pressable>
+        </AnimatedPressable>
       </View>
     </View>
   );

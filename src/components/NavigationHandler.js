@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import ChangeTheme from "../configs/ChangeTheme";
 import CreateNote from "../pages/Home/CreateNote/CreateNote";
+import NoteScreen from "../pages/Home/NoteScreen/NoteScreen";
 import TabBar from "./TabBar";
 
 const Stack = createNativeStackNavigator();
@@ -46,6 +47,7 @@ const NavigationHandler = () => {
           }}
           component={CreateNote}
         />
+        <Stack.Screen name="NoteScreen" component={NoteScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -21,8 +21,20 @@ const InputWithTitle = ({
   const theme = useSelector((state) => state.theme.theme);
 
   return (
-    <View {...props}>
-      <View style={{ display: "flex", flexDirection: "row" }}>
+    <View
+      style={{
+        backgroundColor: ChangeTheme(theme).container,
+        padding: 12,
+        borderRadius: 13,
+      }}
+      {...props}
+    >
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
         <TextTitle
           text={title + ` (${value.length}/${maxLength})`}
           additionStyles={{
@@ -57,14 +69,14 @@ const InputWithTitle = ({
         style={{
           backgroundColor: invalid
             ? ChangeTheme(theme).workBg
-            : ChangeTheme(theme).container,
+            : ChangeTheme(theme).bgColor,
           borderRadius: 13,
           padding: 12,
           alignItems: "flex-start",
           color: ChangeTheme(theme).textMain,
           fontSize: 16,
-          borderColor: invalid ? "red" : ChangeTheme(theme).accent,
-          borderWidth: 1,
+          // borderColor: invalid ? "red" : ChangeTheme(theme).accent,
+          // borderWidth: 1,
         }}
         onFocus={() => onFocus()}
         multiline

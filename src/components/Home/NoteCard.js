@@ -13,7 +13,7 @@ import { notesSlice } from "../../store/notesSlice";
 
 import BookmarkIcon from "../../shared/Icons/BookmarkIcon";
 
-const NoteCard = ({ item, ...props }) => {
+const NoteCard = ({ item, navigation, ...props }) => {
   const theme = useSelector((state) => state.theme.theme);
   const dispatch = useDispatch();
 
@@ -23,6 +23,7 @@ const NoteCard = ({ item, ...props }) => {
     <>
       <TouchableOpacity
         activeOpacity={0.7}
+        onPress={() => navigation.navigate("NoteScreen", { item: item })}
         onLongPress={() => {
           setModalState(true);
           Vibration.vibrate(30);

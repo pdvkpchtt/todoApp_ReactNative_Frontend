@@ -9,7 +9,7 @@ import EmptyComponent from "./EmptyComponent";
 import { notesSlice } from "../../store/notesSlice";
 import LoadingBox from "./LoadingBox";
 
-const NotesList = () => {
+const NotesList = ({ navigation }) => {
   const theme = useSelector((state) => state.theme.theme);
   const [filteredNotes, refreshing] = useSelector(
     (state) => [state.notes.filteredNotes, state.notes.refreshing],
@@ -22,7 +22,7 @@ const NotesList = () => {
   }, []);
 
   const renderItem = ({ item, index }) => {
-    return <NoteCard item={item} marginTop={12} />;
+    return <NoteCard item={item} marginTop={12} navigation={navigation} />;
   };
 
   return (

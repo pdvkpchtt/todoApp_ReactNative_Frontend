@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import ProfileStackScreen from "../pages/Profile/ProfileStackScreen";
+import Profile from "../pages/Profile/Profile";
 import HomeStackScreen from "../pages/Home/HomeStackScreen";
 import DecorationStackScreen from "../pages/Decoration/DecorationStackScreen";
 import CustomTabBar from "./CustomTabBar";
@@ -38,7 +38,7 @@ const TabBar = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileStackScreen}
+        component={Profile}
         // options={{ headerShown: false }}
       />
     </Tab.Navigator>

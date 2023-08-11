@@ -37,7 +37,7 @@ export default notes = [
   {
     id: 5,
     head: "My note with really reallyasdsasd long header",
-    text: "This is my first note for test. Dummy data dummy data dummy data dummy data dummy data dummy data dummy data dummy data",
+    text: "This is my first note for test. Dummy data dummy data dummy data dummy data dummy data dummy data dummy data dummy dataThis is my first note for test. Dummy data dummy data dummy data dummy data dummy data dummy data dummy data dummy dataThis is my first note for test. Dummy data dummy data dummy data dummy data dummy data dummy data dummy data dummy dataThis is my first note for test. Dummy data dummy data dummy data dummy data dummy data dummy data dummy data dummy dataThis is my first note for test. Dummy data dummy data dummy data dummy data dummy data dummy data dummy data dummy dataThis is my first note for test. Dummy data dummy data dummy data dummy data dummy data dummy data dummy data dummy dataThis is my first note for test. Dummy data dummy data dummy data dummy data dummy data dummy data dummy data dummy data",
     category: "travel",
     bookmarked: true,
   },

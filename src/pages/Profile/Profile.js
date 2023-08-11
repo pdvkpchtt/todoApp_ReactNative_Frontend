@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import { shallowEqual, useSelector } from "react-redux";
 import NoteCard from "../../components/Home/NoteCard";
+import ProfileNameCard from "../../components/Profile/ProfileNameCard";
 
 import Layout from "../../shared/Layout";
 
@@ -12,11 +13,7 @@ const ProfileStackScreen = () => {
 
   return (
     <Layout>
-      {filteredNotes.map((item, key) => {
-        if (item.bookmarked) {
-          return <NoteCard item={item} key={key} />;
-        }
-      })}
+      <ProfileNameCard />
     </Layout>
   );
 };

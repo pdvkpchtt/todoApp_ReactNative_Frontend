@@ -59,5 +59,32 @@ export const notesSlice = createSlice({
 
       return newState;
     },
+    editNote: (state, action) => {
+      const newState = {
+        ...state,
+        notes: state.notes.map((item, index) =>
+          action.payload.id == item.id
+            ? {
+                ...item,
+                head: action.payload.head,
+                text: action.payload.text,
+                category: action.payload.category,
+              }
+            : { ...item }
+        ),
+        filteredNotes: state.filteredNotes.map((item, index) =>
+          action.payload.id == item.id
+            ? {
+                ...item,
+                head: action.payload.head,
+                text: action.payload.text,
+                category: action.payload.category,
+              }
+            : { ...item }
+        ),
+      };
+
+      return newState;
+    },
   },
 });
