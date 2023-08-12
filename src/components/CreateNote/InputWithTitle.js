@@ -13,6 +13,7 @@ const InputWithTitle = ({
   onFocus = () => {},
   title = "empty",
   placeholder = "empty",
+  invalidMessage = "Please fill this field!",
   invalid = false,
   numberOfLines = 1,
   maxLength = 100,
@@ -72,6 +73,7 @@ const InputWithTitle = ({
             : ChangeTheme(theme).bgColor,
           borderRadius: 13,
           padding: 12,
+          paddingBottom: 6,
           alignItems: "flex-start",
           color: ChangeTheme(theme).textMain,
           fontSize: 16,
@@ -82,7 +84,7 @@ const InputWithTitle = ({
         multiline
         numberOfLines={numberOfLines}
         maxLength={maxLength}
-        placeholder={invalid ? "Please fill this field!" : placeholder}
+        placeholder={invalid ? invalidMessage : placeholder}
         placeholderTextColor={
           invalid ? "red" : ChangeTheme(theme).textSecondary
         }

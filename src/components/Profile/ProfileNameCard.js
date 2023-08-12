@@ -1,7 +1,6 @@
 import React from "react";
-import { Button, View } from "react-native";
 import { useSelector } from "react-redux";
-import { PermissionsAndroid } from "react-native";
+
 import Card from "../../shared/ui/Card";
 import TextTitle from "../../shared/Text/TextTitle";
 import ChangeTheme from "../../configs/ChangeTheme";
@@ -12,8 +11,12 @@ const ProfileNameCard = () => {
 
   return (
     <Card>
+      <TextTitle additionStyles={{ fontSize: 14 }} text="Username:" />
       <TextTitle
-        additionStyles={{ fontSize: 22, color: ChangeTheme(theme).textMain }}
+        additionStyles={{
+          fontSize: 26,
+          color: ChangeTheme(theme).textMain,
+        }}
         text={username}
       />
     </Card>

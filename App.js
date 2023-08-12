@@ -1,15 +1,8 @@
-import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 import { Provider } from "react-redux";
-import Toast from "react-native-toast-message";
 
 import { store } from "./src/store";
-import NavigationHandler from "./src/components/NavigationHandler";
-import CustomToast from "./src/shared/ui/CustomToast";
-
-const toastConfig = {
-  custom: ({ text1, props }) => <CustomToast text={text1} />,
-};
+import Main from "./main";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -24,6 +17,7 @@ export default function App() {
     "SF-Pro-Text-Semibold": require("./assets/fonts/SF-Pro-Text-Semibold.ttf"),
     "SF-Pro-Text-Bold": require("./assets/fonts/SF-Pro-Text-Bold.ttf"),
     "SF-Compact-Rounded-Medium": require("./assets/fonts/SF-Compact-Rounded-Medium.ttf"),
+    "SF-Compact-Rounded-Bold": require("./assets/fonts/SF-Compact-Rounded-Bold.ttf"),
   });
   if (!fontsLoaded) {
     return null;
@@ -31,11 +25,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <NavigationHandler />
-
-      <Toast config={toastConfig} position="bottom" bottomOffset="20" />
-
-      <StatusBar style="light" />
+      <Main />
     </Provider>
   );
 }
