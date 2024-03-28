@@ -5,7 +5,7 @@ const initialState = {
   username: "Martin",
   login: "admin",
   password: "1234",
-  authorized: true,
+  authorized: false,
 };
 
 export const profileSlice = createSlice({
